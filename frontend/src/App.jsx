@@ -1,7 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import  Login  from "./pages/Login.jsx"
-import  Signup  from "./pages/Signup.jsx"
- import  Home  from "./pages/Home.jsx"
+import  Login  from "./pages/Registration/Login.jsx"
+import  Signup  from "./pages/Registration/Signup.jsx"
+import  Home  from "./pages/Home.jsx"
+import 'react-toastify/ReactToastify.css'
+
 function App() {
   
 
