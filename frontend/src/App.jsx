@@ -1,24 +1,31 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import  Login  from "./pages/Registration/Login.jsx"
-import  Signup  from "./pages/Registration/Signup.jsx"
-import  Home  from "./pages/Home.jsx"
-import 'react-toastify/ReactToastify.css'
+import Login from "./pages/Registration/Login.jsx";
+import Signup from "./pages/Registration/Signup.jsx";
+import Home from "./pages/Home.jsx";
+import { useState } from 'react';
+import RefreshHandler from './RefreshHandler.jsx';
+import 'react-toastify/ReactToastify.css';
+
+const PrivateRoute = ({ element, isAuthenticated }) => {
+  return isAuthenticated ? element : <Navigate to="/login" replace />;
+};
 
 function App() {
-  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    
-    <BrowserRouter>
-      <Routes>
-      <Route path='/' element={<Navigate to = "/login"/>}/>
-        <Route path='/login' element = {<Login/>}/>
-        <Route path='/signup' element = {<Signup/>}/>
-        <Route path='/home' element = {<Home/>}/>
-      </Routes>
-    </BrowserRouter>
-    
-  )
+    <div className='App'>
+      <BrowserRouter>
+        <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
+        <Routes>
+          <Route path='/' element={<Navigate to="/login" replace />} />
+          <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/home' element={<PrivateRoute element={<Home />} isAuthenticated={isAuthenticated} />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
-export default App
+export default App;
