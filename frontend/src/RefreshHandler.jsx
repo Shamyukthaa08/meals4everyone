@@ -7,12 +7,17 @@ function RefreshHandler({ setIsAuthenticated }) {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
 
     // Optional: Add your token validation logic here
     if (token) {
       setIsAuthenticated(true);
       if (location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup') {
-        navigate('/home', { replace: true });
+        if(role=='user'){
+          navigate('/home', { replace: true });
+        }else if(role=='admin'){
+          navigate('/adminboard', { replace: true });
+        }
       }
     } else {
       setIsAuthenticated(false);

@@ -25,13 +25,14 @@ function Home() {
 
   const fetchProducts = async () => {
     try {
-      const url = "http://localhost:8080/products";
+      const url = "http://localhost:8080/products/user";
       const response = await axios.get(url, {
         headers: {
           'Authorization': localStorage.getItem('token')
         }
       });
-      setProducts(response.data);  // Assuming the products are directly in response.data
+      setProducts(response.data);
+     // Assuming the products are directly in response.data
     } catch (err) {
       handleError(err);
     }

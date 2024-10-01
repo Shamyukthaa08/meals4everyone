@@ -70,3 +70,25 @@ margin-top: 100px;
   cursor: pointer;
   margin: 10px 0;
 }
+.role-btn1, .role-btn2{
+  padding:10px; 
+  width:140px;
+  height: 45px;
+  margin:5px;
+  font-size: 16px;
+  border-radius:20px;
+  background-color:rgb(178, 12, 234);
+  border:none;
+  color: white;
+}
+.choice{
+  margin:auto;
+}
+.role-btn1.selected {
+  background-color: #4CAF50; /* Change to your preferred color */
+  color: white;
+}
+.role-btn2.selected {
+  background-color: #4CAF50; /* Change to your preferred color */
+  color: white;
+}

@@ -6,10 +6,12 @@ import './Registration.css';
 import { handleError, handleSuccess } from "./util";
 
 function Signup() {
+  const [selectRole, setSelectRole] = useState('');
   const [signupInfo, setSignupInfo] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    role: ''
   });
   const [confirmPass, setConfirmPass] = useState('');
 
@@ -22,17 +24,22 @@ function Signup() {
     setSignupInfo(copySignupInfo);
   }
 
+  const handleRoleSelect = (role) => {
+    setSelectRole(role);
+    setSignupInfo(prevInfo => ({ ...prevInfo, role })); // Update the role in signupInfo
+  }
+
   const handleSignup = async (e) => {
     e.preventDefault();
-    const { name, email, password } = signupInfo;
-    if (!name || !email || !password) {
-      return handleError('Name, email, and password are required');
+    const { name, email, password, role } = signupInfo;
+    if (!name || !email || !password || !role) {
+      return handleError('Name, email, password, and role are required');
     }
     if (confirmPass !== password) {
       return handleError('The passwords don\'t match. Try again!');
     }
-    if(password.length<6){
-      return handleError('Password should be at least 6 characters long.')
+    if (password.length < 6) {
+      return handleError('Password should be at least 6 characters long.');
     }
     try {
       const url = `http://localhost:8080/auth/signup`;
@@ -70,6 +77,22 @@ function Signup() {
       <div className="registration-container">
         <h1>Signup</h1>
         <form onSubmit={handleSignup}>
+          <div className="registration-div choice">
+            <button
+              type="button"
+              className={`role-btn1 ${selectRole === 'admin' ? 'selected' : ''}`}
+              onClick={() => handleRoleSelect('admin')}
+            >
+              Business
+            </button>
+            <button
+              type="button"
+              className={`role-btn2 ${selectRole === 'user' ? 'selected' : ''}`}
+              onClick={() => handleRoleSelect('user')}
+            >
+              Buyer
+            </button>
+          </div>
           <div className="registration-div">
             <label htmlFor="name">Name</label>
             <input
