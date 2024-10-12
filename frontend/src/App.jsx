@@ -4,7 +4,8 @@ import Signup from "./pages/Registration/Signup.jsx";
 import Home from "./pages/Home.jsx";
 import { useState } from 'react';
 import RefreshHandler from './RefreshHandler.jsx';
-import AdminBoard from './pages/AdminBoard.jsx';
+import AdminBoard from './pages/Adminboard/AdminBoard.jsx';
+import Surprisebag from './pages/Adminboard/Createbag/SurpriseBag.jsx';
 import 'react-toastify/ReactToastify.css';
 
 const PrivateRoute = ({ element, isAuthenticated }) => {
@@ -24,6 +25,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/adminboard' element={<PrivateRoute element={<AdminBoard/>} isAuthenticated={isAuthenticated}/>}/>
           <Route path='/home' element={<PrivateRoute element={<Home />} isAuthenticated={isAuthenticated} />} />
+          <Route path='/surprisebag' element={<Surprisebag/>} />
         </Routes>
       </BrowserRouter>
     </div>

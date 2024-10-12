@@ -34,12 +34,13 @@ function Login() {
               }
           });
 
-          const { success, message, jwtToken, name, role} = response.data;
+          const { success, message, jwtToken, name, role, city} = response.data;
 
           if (success) {
               handleSuccess(message);
               localStorage.setItem('token', jwtToken);
               localStorage.setItem('loggedInUser', name);
+              localStorage.setItem('city', city);
               localStorage.setItem('role', role);
               setTimeout(() => {
                   navigate('/home');

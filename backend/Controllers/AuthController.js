@@ -1,10 +1,50 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UserModel = require("../Models/user");
+const surprisebag = require('../Models/bag');
+
+const createbag = async(req,res) =>{
+    try{
+     const {
+        name,
+        location,
+        category,
+        possibleItems,
+        pickupTimings,
+        numberOfBags,
+        price} = req.body;
+
+   
+   const surpriseBag = new surprisebag({  
+    name,
+    location,
+    category,
+    possibleItems,
+    pickupTimings,
+    numberOfBags,
+    price})
+    console.log('Saving Surprise Bag: ', surpriseBag);
+
+    await surpriseBag.save();
+
+    console.log('Saved Successfully!');
+ 
+    res.status(201).json({
+        message:"Created the bag succesfully",
+        success:true
+    })
+} catch(err){
+    res.status(500)
+            .json({
+                message: "An error occured while creating bag",
+                success: false
+            });
+}
+}
 
 const signup = async (req, res) => {
     try {
-        const { name, email, password, role } = req.body;  // Include role in request body
+        const { name, city, email, password, role } = req.body;  
         const user = await UserModel.findOne({ email });
         
         if (user) {
@@ -12,10 +52,10 @@ const signup = async (req, res) => {
                 .json({ message: 'User already exists, please login', success: false });
         }
         
-        // Create a new user with the role (default to 'user' if not provided)
-        const userModel = new UserModel({ name, email, password, role: role || 'user' });
         
-        // Hash password before saving
+        const userModel = new UserModel({ name, city, email, password, role: role || 'user' });
+        
+        
         userModel.password = await bcrypt.hash(password, 10);
         await userModel.save();
         
@@ -63,7 +103,10 @@ const login = async (req, res) => {
                 jwtToken,
                 email,
                 name: user.name,
-                role: user.role  // Include role in response
+                role: user.role,
+                city:user.city
+
+                  // Include role in response
             });
     } catch (err) {
         res.status(500)
@@ -76,5 +119,7 @@ const login = async (req, res) => {
 
 module.exports = {
     signup,
-    login
+    login,
+    createbag
+    
 };

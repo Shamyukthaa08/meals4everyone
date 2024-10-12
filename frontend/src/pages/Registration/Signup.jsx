@@ -9,6 +9,7 @@ function Signup() {
   const [selectRole, setSelectRole] = useState('');
   const [signupInfo, setSignupInfo] = useState({
     name: '',
+    city:'',
     email: '',
     password: '',
     role: ''
@@ -31,8 +32,8 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const { name, email, password, role } = signupInfo;
-    if (!name || !email || !password || !role) {
+    const { name, city, email, password, role } = signupInfo;
+    if (!name || !city || !email || !password || !role) {
       return handleError('Name, email, password, and role are required');
     }
     if (confirmPass !== password) {
@@ -102,6 +103,17 @@ function Signup() {
               name='name'
               autoFocus
               placeholder="Enter your name"
+            />
+          </div>
+          <div className="registration-div">
+            <label htmlFor="city">City</label>
+            <input
+              className='input-field'
+              onChange={handleChange}
+              type='text'
+              name='city'
+              autoFocus
+              placeholder="Enter city"
             />
           </div>
 

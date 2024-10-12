@@ -3,6 +3,7 @@ const Joi = require('joi');
 const signupValidation = (req, res, next) => {
     const schema = Joi.object({
         name: Joi.string().min(3).max(100).required(),
+        city: Joi.string().required(), // Add city as optional
         email: Joi.string().email().max(100).required(),
         password: Joi.string().min(4).max(100).required(),
         role: Joi.string().valid('user', 'admin').optional() // Role is optional, must be 'user' or 'admin'

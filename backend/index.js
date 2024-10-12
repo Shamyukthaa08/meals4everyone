@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const AuthRouter = require('./Routes/AuthRouter');
 const ProductRouter = require('./Routes/ProductRouter');
+const SurpriseBag = require('./Routes/SurpriseBag')
 
 require('dotenv').config();
 require('./Models/db');
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter );
+app.use('/admin', SurpriseBag);
 
 
 app.listen(PORT, ()=>{
