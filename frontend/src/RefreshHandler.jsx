@@ -14,7 +14,7 @@ function RefreshHandler({ setIsAuthenticated }) {
       setIsAuthenticated(true);
       if (location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup') {
         if(role=='user'){
-          navigate('/home', { replace: true });
+          navigate('/userboard', { replace: true });
         }else if(role=='admin'){
           navigate('/adminboard', { replace: true });
         }

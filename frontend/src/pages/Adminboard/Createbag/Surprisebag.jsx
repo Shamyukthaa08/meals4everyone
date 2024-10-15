@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";  // Import Axios
 
 import { handleError, handleSuccess } from '../../Registration/util';
+import { ToastContainer } from "react-toastify";
 
 import './surprise.css';
 import womenwithbag from "../../../assets/womenwithbag.jpg";
@@ -71,6 +72,7 @@ function Surprisebag() {
       </div>
 
       <div className="createSurpriseBag">
+      <ToastContainer/>
         <h2 className="surprise-title">CREATE YOUR BAG OF SURPRISE!</h2>
 
         <div className="select-option">

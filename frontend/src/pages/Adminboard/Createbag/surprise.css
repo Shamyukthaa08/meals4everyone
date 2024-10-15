@@ -1,9 +1,9 @@
-body{
-    background-color: #1e4836;
-}
+
+
 .SurpriseBag{
     display: flex;
     gap:13%;
+    background-color: #1e4836;
     
 }
 .select-option{
@@ -40,7 +40,7 @@ body{
     border:2px solid #1e4836;
     border-radius: 10px;
     text-align: center;
-    background-color: #f5ffe1;
+    background-color: #e1ffe4;
     color:rgb(89, 89, 89)
 }
 .price{
@@ -49,7 +49,7 @@ body{
     border:2px solid #1e4836;
     border-radius: 10px;
     text-align: center;
-    background-color: #f5ffe1;
+    background-color: #e1ffe4;
     color:rgb(89, 89, 89)
 }
 option::after{

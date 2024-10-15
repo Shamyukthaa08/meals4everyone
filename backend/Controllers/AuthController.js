@@ -41,7 +41,28 @@ const createbag = async(req,res) =>{
             });
 }
 }
-
+const getBags = async(req,res)=>{
+    try{
+        const bags = await surprisebag.find();
+        if(bags.length===0){
+            return res.status(404).json({
+                message:"No surprise bags found",
+                success:false
+            });
+        }
+        res.status(200).json({
+            message:"Fetched bags successfully",
+            success:true,
+            bags
+        });
+    }
+    catch(err){
+        res.status(500).json({
+            message:"An error occured while fetching bags",
+            success:false
+        });
+    }
+}
 const signup = async (req, res) => {
     try {
         const { name, city, email, password, role } = req.body;  
@@ -120,6 +141,7 @@ const login = async (req, res) => {
 module.exports = {
     signup,
     login,
-    createbag
+    createbag,
+    getBags
     
 };

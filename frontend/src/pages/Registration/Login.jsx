@@ -43,7 +43,7 @@ function Login() {
               localStorage.setItem('city', city);
               localStorage.setItem('role', role);
               setTimeout(() => {
-                  navigate('/home');
+                  navigate('/userboard');
               }, 1000);
           } else {
               handleError(message);
