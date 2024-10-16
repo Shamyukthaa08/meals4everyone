@@ -12,7 +12,8 @@ const createbag = async(req,res) =>{
         possibleItems,
         pickupTimings,
         numberOfBags,
-        price} = req.body;
+        price,
+        ordered} = req.body;
 
    
    const surpriseBag = new surprisebag({  
@@ -22,7 +23,8 @@ const createbag = async(req,res) =>{
     possibleItems,
     pickupTimings,
     numberOfBags,
-    price})
+    price,
+    ordered })
     console.log('Saving Surprise Bag: ', surpriseBag);
 
     await surpriseBag.save();
@@ -63,6 +65,82 @@ const getBags = async(req,res)=>{
         });
     }
 }
+const getBagsByName = async (req, res) => {
+    try {
+      const { name } = req.params; 
+      
+      const bags = await surprisebag.find({ name });
+  
+      if (bags.length === 0) {
+        return res.status(404).json({
+          message: "No bags found with the given name",
+          success: false,
+        });
+      }
+  
+      res.status(200).json({
+        message: "Fetched bags successfully",
+        success: true,
+        bags,
+      });
+    } catch (err) {
+      res.status(500).json({
+        message: "An error occurred while fetching bags",
+        success: false,
+      });
+    }
+  };
+  
+const updateBag = async(req,res)=>{
+    try{
+        const { id } = req.params;
+        const {
+            name,
+            location,
+            category,
+            possibleItems,
+            pickupTimings,
+            numberOfBags,
+            price,
+            ordered
+        } = req.body;
+
+        const updatedBag = await surprisebag.findByIdAndUpdate(
+            id,
+            {
+            name,
+            location,
+            category,
+            possibleItems,
+            pickupTimings,
+            numberOfBags,
+            price,
+            ordered
+            },
+            { new:true }
+        );
+        if(!updateBag){
+            return res.status(400).json({
+                message:"Bag not found",
+                success:false
+            });
+        }
+        res.status(200).json({
+            message: "Bag updated successfully",
+            success: true,
+            bag: updatedBag // Return the updated bag
+        });
+
+    }
+    catch (err) {
+        res.status(500).json({
+            message: "An error occurred while updating the bag",
+            success: false
+        });
+    }
+
+}
+
 const signup = async (req, res) => {
     try {
         const { name, city, email, password, role } = req.body;  
@@ -110,7 +188,7 @@ const login = async (req, res) => {
                 .json({ message: 'Auth failed, email or password is wrong', success: false });
         }
         
-        // Include role in JWT payload
+       
         const jwtToken = jwt.sign(
             { email: user.email, _id: user._id, role: user.role },  // Add role to token payload
             process.env.JWT_SECRET,
@@ -127,7 +205,7 @@ const login = async (req, res) => {
                 role: user.role,
                 city:user.city
 
-                  // Include role in response
+                  
             });
     } catch (err) {
         res.status(500)
@@ -142,6 +220,8 @@ module.exports = {
     signup,
     login,
     createbag,
-    getBags
+    getBags,
+    updateBag,
+    getBagsByName
     
 };

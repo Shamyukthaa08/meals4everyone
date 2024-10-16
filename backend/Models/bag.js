@@ -32,6 +32,10 @@ const surpriseBagSchema = new mongoose.Schema({
         required: true,
         min: 0, // Price should be non-negative
     },
+    ordered: {
+        type:[String],
+        default:[],
+    }
 });
 
 const surprisebag = mongoose.model('surprisebag', surpriseBagSchema);

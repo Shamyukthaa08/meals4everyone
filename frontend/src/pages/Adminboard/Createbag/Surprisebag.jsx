@@ -54,6 +54,7 @@ function Surprisebag() {
       pickupTimings: [pickupTiming],
       numberOfBags,
       price: parseFloat(price),
+     
     };
 
     try {

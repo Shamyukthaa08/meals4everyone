@@ -62,7 +62,7 @@ function Login() {
   return (
     <div className="container">
       <div className="registration-container">
-        <h1>Login</h1>
+        <h1 className="registration-title">Login</h1>
         <form onSubmit={handleLogin}>
           <div className="registration-div">
             <label htmlFor="email">Email</label>

@@ -42,7 +42,7 @@ export const Navbar = () => {
           <NavLink to={role==='user'?'/orderbag':'/surprisebag'}>{role==='user'?'SURPRISE-BAG':'CREATE'}</NavLink>
         </li>
         <li>
-          <NavLink to="/">Services</NavLink>
+          <NavLink to="/managebags">MANAGE</NavLink>
         </li>
         <li>
           <NavLink to="/">Contact</NavLink>

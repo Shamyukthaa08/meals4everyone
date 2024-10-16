@@ -7,6 +7,7 @@ import RefreshHandler from './RefreshHandler.jsx';
 import AdminBoard from './pages/Adminboard/AdminBoard.jsx';
 import Surprisebag from './pages/Adminboard/Createbag/SurpriseBag.jsx';
 import OrderBag from './pages/UserBoard/Order/Ordersurprise.jsx'
+import ManageBag from './pages/Adminboard/ManageBag/Managebag.jsx';
 import 'react-toastify/ReactToastify.css';
 
 const PrivateRoute = ({ element, isAuthenticated }) => {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/userboard' element={<PrivateRoute element={<UserBoard />} isAuthenticated={isAuthenticated} />} />
           <Route path='/surprisebag' element={<Surprisebag/>} />
           <Route path='/orderbag' element={<OrderBag/>} />
+          <Route path='/managebags' element={<ManageBag/>}/>
         </Routes>
       </BrowserRouter>
     </div>

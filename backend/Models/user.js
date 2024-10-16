@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     city:{
         type:String,
@@ -21,8 +22,8 @@ const UserSchema = new Schema({
     },
     role: {
         type: String,
-        enum: ['user', 'admin'],  // Ensure only 'user' or 'admin' is set
-        default: 'user'  // Default role is 'user'
+        enum: ['user', 'admin'],  
+        default: 'user' 
     }
 });
 
