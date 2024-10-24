@@ -1,0 +1,21 @@
+.admin-header {
+   display: flex;
+   background-color: whitesmoke;
+
+    
+}
+.main-heading{
+    padding:30px;
+    font-size: 50px;
+    color:#1e4836;
+}
+.admin-main{
+    margin-top:200px;
+    margin-left:30px;
+    text-align: center;
+    
+}
+.admin-main p{
+    font-size: 20px;
+    color:rgb(72, 72, 72);
+}

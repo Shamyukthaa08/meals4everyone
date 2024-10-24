@@ -1,0 +1,84 @@
+.manage-bag{
+    margin:30px;
+    padding:10px 20px;
+    background-color:#285d46;
+    width:600px;
+    max-height: 400px;
+    box-shadow: 8px 10px #D2FF72;
+    line-height: 30px;
+}
+.category-1{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin:10px 0;
+}
+.manage-category{
+    color:#D2FF72;
+    font-size: 18px;
+}
+.manage-category-strong{
+    color:rgb(243, 239, 239);
+    font-size: 22px;
+}
+.manage-price{
+    width:100px;
+    background-color: #D2FF72;
+    text-align: center;
+    color: rgb(112, 112, 112);
+    font-size: 16px;
+}
+.manage-pickupTimings{
+    color:#e2ffa2;
+    font-size: 17px;
+    margin:10px 2px;
+}
+.possible-items{
+  
+    font-size: 18px;
+    color: white;
+   
+}
+.possible-items-div{
+    border: 2px solid #D2FF72;
+    text-align: center;
+    border-radius:20px;
+    max-width:600px;
+    padding:10px;
+    letter-spacing: 2px;
+    
+}
+.category-2{
+    display: flex;
+    justify-content: space-between;
+    margin:20px;
+    flex-wrap: wrap;
+}
+.manage-ordered-strong{
+    font-size: 20px;
+    color: #D2FF72;
+    letter-spacing: 1px;
+}
+.manage-ordered{
+    color: white;
+    font-size: 18px;
+}
+.order-done{
+    background-color: #e2ffa2;
+   border: none;
+    padding:10px;
+    color:rgb(76, 75, 75);
+    border-radius: 20px;
+}
+.order-done:hover{
+    background-color: #D2FF72;
+}
+.manage-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
